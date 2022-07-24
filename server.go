@@ -12,8 +12,15 @@ func ping(c echo.Context) error {
 	return c.String(http.StatusOK, msg)
 }
 
+func generate(c echo.Context) error {
+	pass := generator()
+	return c.String(http.StatusOK, pass)
+}
+
 func routes(e *echo.Echo) {
 	e.GET("/ping", ping)
+	e.GET("/", ping)
+	e.GET("/generete", generate)
 }
 
 func server() {

@@ -24,6 +24,11 @@ func getEnvValue(v string) string {
 	return value
 }
 
+func generator() string {
+	var pass string
+	return pass
+}
+
 func main() {
 	envURL = getEnvValue("HOST") + ":" + getEnvValue("PORT")
 	server()
