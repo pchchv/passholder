@@ -9,8 +9,7 @@ import (
 )
 
 func ping(c echo.Context) error {
-	msg := "Passholder. Version 0.0.0"
-	return c.String(http.StatusOK, msg)
+	return c.String(http.StatusOK, "Passholder. Version 0.0.1")
 }
 
 func generate(c echo.Context) error {
@@ -23,10 +22,15 @@ func generate(c echo.Context) error {
 	return c.String(http.StatusOK, passwordGenerator(characters, length))
 }
 
+func post(c echo.Context) error {
+	return c.String(http.StatusOK, "Login added")
+}
+
 func routes(e *echo.Echo) {
 	e.GET("/ping", ping)
 	e.GET("/", ping)
 	e.GET("/generate", generate)
+	e.POST("/pass", post)
 }
 
 func server() {
