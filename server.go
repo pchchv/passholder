@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"strconv"
 
 	"github.com/labstack/echo/v4"
 )
@@ -13,14 +14,19 @@ func ping(c echo.Context) error {
 }
 
 func generate(c echo.Context) error {
-	pass := generator()
-	return c.String(http.StatusOK, pass)
+	length := 0
+	characters := c.QueryParam("characters")
+	l := c.QueryParam("length")
+	if l != "" {
+		length, _ = strconv.Atoi(l)
+	}
+	return c.String(http.StatusOK, passwordGenerator(characters, length))
 }
 
 func routes(e *echo.Echo) {
 	e.GET("/ping", ping)
 	e.GET("/", ping)
-	e.GET("/generete", generate)
+	e.GET("/generate", generate)
 }
 
 func server() {

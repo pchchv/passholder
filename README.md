@@ -20,13 +20,14 @@
             l — Lowercase
             n — Numbers
             s — Symbols
+        lehgth — Password length(optional)
         example: 
             "GET" :80/generete?characters=ul
-            "GET" :80/generete?characters=ulns
-            "GET" :80/generete?characters=n
+            "GET" :80/generete?characters=ulns&length=33
+            "GET" :80/generete?characters=n&length=5
 ```
 ### Params for ```.env``` file
 ```
 HOST=127.0.0.1
-PORT=80
+PORT=8000
 ```
